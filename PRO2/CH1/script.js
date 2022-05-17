@@ -43,11 +43,11 @@ function getETA(difference) {
     hours = minutes / 60;
     days = hours / 24;
 
-    return `
-        ${Math.floor(days)} days,
-        ${Math.floor(hours % 24)}h
-        ${Math.floor(minutes % 60)}m
-        ${Math.floor(seconds % 60)}s.
+    return `\
+        ${Math.floor(days)} days,\
+        ${Math.floor(hours % 24)}h\
+        ${Math.floor(minutes % 60)}m\
+        ${Math.floor(seconds % 60)}s\
     `
 }
 
@@ -84,16 +84,16 @@ function getDistance(difference) {
 //  look very interesting.
 function getAcceleration() {
     let accel = 10 + Math.floor(Math.random() * 5)
-    return `${NF.format(accel)} m/s^s`
+    return `${NF.format(accel)} m/s^2`
 }
 
 // Appends some text to the command history field.
 function appendToHistory(text) {
-    if (TERMINAL_HISTORY.innerHTML.length > 0) {
+    if (TERMINAL_HISTORY.innerText.length > 0) {
         text = "\n" + text;
     }
 
-    TERMINAL_HISTORY.innerHTML += text;
+    TERMINAL_HISTORY.innerText += text;
     TERMINAL_HISTORY.scrollTop = TERMINAL_HISTORY.scrollHeight;
 }
 
@@ -102,17 +102,27 @@ function handleCommand(command) {
     let parts = command.split(" ");
     if (parts[0] == "help" || parts[0] == "?") {
         appendToHistory(HELP_TEXT);
+        return;
     }
 
     if (parts[0] == "marsweight") {
+        if (parts.length !== 2) {
+            appendToHistory(`Invalid input: Command requires one argument, got [${parts}].`);
+            return;
+        }
+
         appendToHistory(
             `${parts[1]}KG on Earth is ${Number(parts[1]) * 0.375}KG on Mars.`
         );
+        return;
     }
 
     if (parts[0] == "echo") {
         appendToHistory(parts.slice(1).join(" "));
+        return;
     }
+
+    appendToHistory(`Invalid input: Unrecognized command ${parts[0]} in [${parts}].`);
 }
 
 // Submits the current input value to the `handleCommand` function.
@@ -121,7 +131,7 @@ function submitInput(input) {
         handleCommand(input.value);
         input.value = "";
     } else if (event.code == "KeyL" && event.ctrlKey) {
-        TERMINAL_HISTORY.innerHTML = "";
+        TERMINAL_HISTORY.innerText = "";
     }
 }
 
@@ -130,19 +140,19 @@ setInterval(() => {
     let difference = END_DATE - new Date();
 
     let eta = document.getElementById("eta");
-    eta.innerHTML = getETA(difference);
+    eta.innerText = getETA(difference);
 
     let speed = document.getElementById("speed");
-    speed.innerHTML = getSpeed(difference);
+    speed.innerText = getSpeed(difference);
 
     let acceleration = document.getElementById("acceleration");
-    acceleration.innerHTML = getAcceleration();
+    acceleration.innerText = getAcceleration();
 
     let fuel = document.getElementById("fuel");
-    fuel.innerHTML = getFuel(difference);
+    fuel.innerText = getFuel(difference);
 
     let distance = document.getElementById("distance");
-    distance.innerHTML = getDistance(difference);
+    distance.innerText = getDistance(difference);
 }, 1000);
 
 // We send out a `help` command on startup to display the help message. This

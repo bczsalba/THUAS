@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap');
 
 :root {
     --bg: #161f21;
@@ -14,15 +14,10 @@ header h1 {
     margin-bottom: 30px;
 }
 
-/* Using `p` with a class would probably be a bit cleaner than overwriting *all* text
- * styles, but this felt a bit more logical.
- */
 * {
     font-size: 20px;
-    font-weight: normal;
-    font-style: initial;
-    font-family: 'Noto Sans Mono', monospace;
     margin: 15px 5px;
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 /* No idea why the outer h1 has a different margin than the inner `td`-s, but it seems
