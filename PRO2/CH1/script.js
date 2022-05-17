@@ -122,7 +122,7 @@ function handleCommand(command) {
         return;
     }
 
-    appendToHistory(`Invalid input: Unrecognized command ${parts[0]} in [${parts}].`);
+    appendToHistory(`Invalid input: Unrecognized command '${parts[0]}' in [${parts}].`);
 }
 
 // Submits the current input value to the `handleCommand` function.
