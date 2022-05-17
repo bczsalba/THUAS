@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+
+:root {
+    --bg: #161f21;
+    --fg: #898989;
+
+    background: var(--bg);
+    color: var(--fg);
+
+    margin: 40px;
+}
+
+header h1 {
+    margin-bottom: 30px;
+}
+
+/* Using `p` with a class would probably be a bit cleaner than overwriting *all* text
+ * styles, but this felt a bit more logical.
+ */
+* {
+    font-size: 20px;
+    font-weight: normal;
+    font-style: initial;
+    font-family: 'Noto Sans Mono', monospace;
+    margin: 15px 5px;
+}
+
+/* No idea why the outer h1 has a different margin than the inner `td`-s, but it seems
+ * to happen to be about 12px.
+ * God I love CSS.
+ */
+h1 {
+    margin-left: 12px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+td {
+    word-wrap: break-word;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+div.box {
+    border: 2px solid #454545;
+    margin-bottom: 15px;
+}
+
+div.table-div {
+    display: flex;
+    justify-content: center;
+}
+
+#terminal {
+    border: 2px solid grey;
+    margin: 12px;
+    padding: 12px;
+    color: #555;
+}
+
+#terminal-history {
+    height: 140px;
+    overflow-y: scroll;
+}
+
+#terminal-input {
+    background-color: var(--bg);
+    color: var(--fg);
+    border: none;
+    width: 100%;
+}
+
+#terminal-input:focus {
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    * {
+        font-size: 15px;
+    }
+
+    :root {
+        margin: 10px;
+    }
+}

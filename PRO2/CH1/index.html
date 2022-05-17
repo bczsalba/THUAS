@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript In Space</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <header>
+        <h1>Your journey</h1>
+    </header>
+    <main>
+        <div id="overview" class="box">
+            <h1>Overview</h1>
+            <div class="table-div">
+                <table>
+                    <tr>
+                        <td>Destination</td>
+                        <td>Mars</td>
+                    </tr>
+                    <tr>
+                        <td>Distance travelled</td>
+                        <td id="distance">Mars</td>
+                    </tr>
+                    <tr>
+                        <td>ETA</td>
+                        <td id="eta">3 days</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="data" class="box">
+            <h1>Data</h1>
+            <div class="table-div">
+                <table>
+                    <tr>
+                        <td>Speed</td>
+                        <td id="speed">Way too fast</td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td id="acceleration">500 m/s^2</td>
+                    <tr>
+                        <td>Fuel remaining</td>
+                        <td id="fuel">100kg</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="utils" class="box">
+            <h1>Utilities</h1>
+            <div id="terminal">
+                <pre id="terminal-history"></pre>
+                <input type="text" placeholder="Type a command..." id="terminal-input" onkeydown="submitInput(this)">
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+	<script src="script.js"></script>
+  </body>
+</html>
